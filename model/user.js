@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('./db/db_conect');
+const db = require('../db/db_conect');
 
 const User = db.define(
     'User',{
@@ -24,8 +24,8 @@ const User = db.define(
 });
 
 //COMANDO PARA CRIAR A TABELA NO BANCO DE DADOS
-Usuario.sync();
+User.sync();
 
 //VERIFICA SE TEM ALGUMA ALTERAÇÃO NA TABELA PARA INSERIR OS NOVOS CAMPOS
 //Usuario.sync({alter: true});
-module.exports = Usuario;
+module.exports = User;
