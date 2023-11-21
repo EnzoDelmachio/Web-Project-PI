@@ -2,13 +2,13 @@ const express = require("express");
 const path = require("path");
 
 const spawnSync = require('child_process');
-const router = express.Router();
 
-const conection = require('./db/db_conect');
-const User = require('./model/user');
+const router = express.Router();
+const conexao = require('../db/db_conect');
+const User = require("../model/user");
 
 router.get("/", (req, res)=>{
-    res.sendFile(path.join(__dirname, "./view/html", "index.html"));
+    res.sendFile(path.join(__dirname, "../view/html", "login.html"));
 });
 
 router.post("/", async (req, res)=>{
@@ -24,14 +24,14 @@ router.post("/", async (req, res)=>{
 
     if(user === null){
         console.log("Usuário ou senha inválida");
-        res.sendFile(path.join(__dirname, "./view/html", "index.html"));
+        res.sendFile(path.join(__dirname, "../view/html", "signup.html"));
     }
 
     if(label_email == user.email && label_password == user.password){
-        res.sendFile(path.join(__dirname, "./view/html", "principal.html"));
+        res.sendFile(path.join(__dirname, "../view/html", "product_index.html"));
     }else{
         console.log("Usuário ou senha inválida");
-        res.sendFile(path.join(__dirname, "./view/html", "index.html"));
+        res.sendFile(path.join(__dirname, "../view/html", "login.html"));
     }
 });
 
@@ -48,7 +48,7 @@ router.post("/realizarLoginAPI", async(req, res)=>{
         }
     })
 
-    if(user === null){
+    if(usuario === null){
         return res.status(404).json({
             mensagem: "Usuário não localizado!"
         });
@@ -85,19 +85,10 @@ router.post("/cadastrarUsuarioAPI", async (req, res)=>{
 router.post("/cadastrarUsuario", async (req, res)=>{
     console.log(req.body);
     await User.create(req.body)
-    .then(()=>{
-        document.getElementById("popup_cadastrar_usuario").style.display = 'none';
-        res.redirect('/');
-    }).catch(()=>{
-        res.sendFile(path.join(__dirname, "../../paginas", "index.html"));
-    });
+    res.sendFile(path.join(__dirname, "../view/html", "login.html"));
 });
 
-router.get("/principal", (req, res)=>{
-    res.sendFile(path.join(__dirname, "./view/html", "principal.html"));
-});
-
-router.get("/table_user", async (req, res)=>{
+router.get("/tabelaUsuario", async (req, res)=>{
     const dados = await User.findAll();
     res.json(dados);
 });
