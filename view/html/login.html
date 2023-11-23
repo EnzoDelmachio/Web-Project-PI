@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
- <link rel="stylesheet" type="text/css" href="../css/login.css">
+  <link rel="stylesheet" type="text/css" href="../css/login.css">
 </head>
 <body>
- <div class="login-container">
+  <div class="login-container">
     <h1>Login</h1>
-    <form>
+    <form method="post" class="login">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
       
@@ -15,8 +15,16 @@
       
       <button type="submit">Login</button>
       <hr>
-      <button type="signup">Signup</button>
+      <button id="signupButton" type="button">Signup</button>
     </form>
- </div>
+  </div>
+
+  <script>
+    // Adiciona um evento de clique ao botão "Signup"
+    document.getElementById('signupButton').addEventListener('click', function() {
+      // Redireciona para a página signup.html
+      window.location.href = './signup';
+    });
+  </script>
 </body>
 </html>

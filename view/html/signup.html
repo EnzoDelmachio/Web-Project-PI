@@ -12,9 +12,9 @@
 
     <div class="ui-container">
         <h1>Signup</h1>
-        <form action="#">
+        <form method="post" action="/signup" class="signup">
             <div class="input-field">
-                <label for="username">Username</label>
+                <label for="name">Username</label>
                 <input type="text" id="username" required>
             </div>
             <div class="input-field">
@@ -25,9 +25,6 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" required>
             </div>
-            <div class="input-field">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" required>
             </div>
             <div class="input-field">
                 <button type="submit">Sign Up</button>

@@ -4,11 +4,14 @@ const path = require("path");
 const spawnSync = require('child_process');
 
 const router = express.Router();
-const conexao = require('../db/db_conect');
 const User = require("../model/user");
 
 router.get("/", (req, res)=>{
     res.sendFile(path.join(__dirname, "../view/html", "login.html"));
+});
+
+router.get("/signup", (req, res)=>{
+    res.sendFile(path.join(__dirname, "../view/html", "signup.html"));
 });
 
 router.post("/", async (req, res)=>{
@@ -24,7 +27,7 @@ router.post("/", async (req, res)=>{
 
     if(user === null){
         console.log("Usuário ou senha inválida");
-        res.sendFile(path.join(__dirname, "../view/html", "signup.html"));
+        res.sendFile(path.join(__dirname, "../view/html", "login.html"));
     }
 
     if(label_email == user.email && label_password == user.password){
@@ -35,7 +38,18 @@ router.post("/", async (req, res)=>{
     }
 });
 
-router.post("/realizarLoginAPI", async(req, res)=>{
+router.post("/signup", async (req, res)=>{
+    console.log(req.body);
+    await User.create(req.body)
+    res.sendFile(path.join(__dirname, "../view/html", "login.html"));
+});
+
+router.get("/tableUser", async (req, res)=>{
+    const data = await User.findAll();
+    res.json(data);
+});
+
+router.post("/LoginAPI", async(req, res)=>{
     var email = req.body.email;
     var password = req.body.password;
 
@@ -66,7 +80,7 @@ router.post("/realizarLoginAPI", async(req, res)=>{
     
 });
 
-router.post("/cadastrarUsuarioAPI", async (req, res)=>{
+router.post("/signupAPI", async (req, res)=>{
     await User.create(req.body)
     .then(()=>{
        return res.json({
@@ -80,17 +94,6 @@ router.post("/cadastrarUsuarioAPI", async (req, res)=>{
             mensagem: "Falha ao cadastrar usuário!"
        });
     });
-});
-
-router.post("/cadastrarUsuario", async (req, res)=>{
-    console.log(req.body);
-    await User.create(req.body)
-    res.sendFile(path.join(__dirname, "../view/html", "login.html"));
-});
-
-router.get("/tabelaUsuario", async (req, res)=>{
-    const dados = await User.findAll();
-    res.json(dados);
 });
 
 //PADRÃO SINGLETON
