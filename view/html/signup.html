@@ -1,37 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/signup.css">
-    <title>Stock Management System - Sign Up</title>
 </head>
-
 <body>
-
-    <div class="ui-container">
+    <div class="signup_container">
         <h1>Signup</h1>
         <form method="post" action="/signup" class="signup">
-            <div class="input-field">
-                <label for="name">Username</label>
-                <input type="text" id="username" required>
-            </div>
-            <div class="input-field">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-            </div>
-            <div class="input-field">
-                <label for="password">Password</label>
-                <input type="password" id="password" required>
-            </div>
-            </div>
-            <div class="input-field">
-                <button type="submit">Sign Up</button>
-            </div>
+
+            <label for="name">Name:</label>
+            <input type="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+
+            <input type="submit" value="Signup" class="signup_button">
+
         </form>
     </div>
-
 </body>
 
 </html>

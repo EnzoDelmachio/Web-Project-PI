@@ -1,9 +1,8 @@
 const express = require("express");
 const path = require("path");
-
 const spawnSync = require('child_process');
-
 const router = express.Router();
+
 const User = require("../model/user");
 
 router.get("/", (req, res)=>{
