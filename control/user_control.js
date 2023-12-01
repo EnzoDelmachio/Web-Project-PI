@@ -38,9 +38,23 @@ router.post("/", async (req, res)=>{
 });
 
 router.post("/signup", async (req, res)=>{
-    console.log(req.body);
-    await User.create(req.body)
-    res.sendFile(path.join(__dirname, "../view/html", "login.html"));
+    var label_email = req.body.email;
+
+    const user = await User.findOne({
+        attributes: ['id', 'name', 'email', 'password'],
+        where: {
+            email: label_email
+        }
+    })
+
+    if(user === null){
+        console.log(req.body);
+        await User.create(req.body)
+        res.sendFile(path.join(__dirname, "../view/html", "login.html"));
+    }else{
+        console.log("Usuário já cadastrado");
+        res.sendFile(path.join(__dirname, "../view/html", "login.html"))
+    }
 });
 
 router.get("/tableUser", async (req, res)=>{

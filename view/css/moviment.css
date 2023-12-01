@@ -11,11 +11,6 @@ body {
     box-shadow: 0px 0px 10px 0px #000;
    }
    
-   .stock-container h1 {
-    text-align: center;
-    color: #333;
-   }
-   
    .stock-container h2 {
     text-align: center;
     color: #555;
@@ -38,14 +33,7 @@ body {
     border-radius: 4px;
    }
    
-   .stock-container select {
-    margin-bottom: 15px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-   }
-   
-   .stock-container button {
+   .moviment_button {
     background-color: #333;
     color: #fff;
     padding: 10px;
@@ -55,6 +43,6 @@ body {
     transition: background-color 0.3s;
    }
    
-   .stock-container button:hover {
+   .moviment_button:hover {
     background-color: #555;
    }

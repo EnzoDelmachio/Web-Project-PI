@@ -4,31 +4,60 @@
  <link rel="stylesheet" type="text/css" href="../css/moviment_index.css">
 </head>
 <body>
- <div class="stock-container">
-    <h1>Stock Management System</h1>
-    <h2>Movement Management</h2>
-    <table>
+  <div class="ui-container">
+    <h1>Moviments</h1>
+    <button id="movimentButton" onclick="window.location.href='/moviment'" type="button">New Moviment</button>
+    <table id="moviment-table">
       <thead>
         <tr>
-          <th>Stock</th>
+          <th>Product Name</th>
           <th>Quantity</th>
           <th>Type</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Apple</td>
-          <td>50</td>
-          <td>Entry</td>
-        </tr>
-        <tr>
-          <td>Orange</td>
-          <td>20</td>
-          <td>Exit</td>
-        </tr>
+      <tbody id="moviment-table-body">
+        <!-- Product data insert -->
       </tbody>
     </table>
-    <a href="moviment.html">Register Movement</a>
- </div>
+  </div>
+
+  <script>
+  // Função para fazer a requisição AJAX e obter os dados JSON
+  function fetchMoviments() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          var movimets = JSON.parse(xhr.responseText);
+          renderMoviments(moviments);
+        } else {
+          console.error('Ocorreu um erro ao obter os dados dos movimentos.');
+        }
+      }
+    };
+
+    xhr.open('GET', '/tableMoviment');
+    xhr.send();
+  }
+
+  // Função para inserir os dados dos movimentos na tabela
+  function renderMoviments(moviments) {
+    var tableBody = document.getElementById('moviment-table-body');
+
+    moviments.forEach(function(moviment) {
+      var row = tableBody.insertRow(-1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+
+      cell1.innerHTML = moviment.name;
+      cell2.innerHTML = moviment.quantity;
+      cell3.innerHTML = moviment.type;
+    });
+  }
+
+  // Buscar os movimentos quando a página carregar
+  window.onload = fetchMoviments;
+  </script>
 </body>
 </html>

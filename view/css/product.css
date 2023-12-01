@@ -13,23 +13,43 @@ body {
     padding: 16px;
     background-color: #fff;
     box-shadow: 0px 0px 10px 0px #000;
+    text-align: center;
    }
+
+   .signup_container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
    
    .ui-container form {
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
    }
    
    .ui-container label {
-    margin-top: 10px;
+    margin-bottom: 10px;
    }
    
    .ui-container input, .ui-container select {
-    width: 100%;
+    margin-bottom: 15px;
     padding: 8px;
-    margin-top: 6px;
     border: 1px solid #ddd;
+    border-radius: 4px;
+   }
+
+   .product_button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+   }
+
+   .product_button:hover {
+    background-color: #555;
    }
    
    .ui-container button {

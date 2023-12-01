@@ -5,23 +5,20 @@
 </head>
 <body>
  <div class="stock-container">
-    <h1>Stock Management System</h1>
-    <h2>Movement Management</h2>
-    <form>
-      <label for="stock">Stock:</label>
-      <input type="text" id="stock" name="stock" required>
+    <h2>Movement Registration</h2>
+      <form method="post" action="/moviment" class="moviment">
+
+        <label for="name">Name:</label>
+        <input type="name" name="name" required>
       
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" required>
+        <label for="quantity">Quantity:</label>
+        <input type="quantity" name="quantity" required>
       
-      <label for="type">Type:</label>
-      <select id="type" name="type">
-        <option value="entry">Entry</option>
-        <option value="exit">Exit</option>
-      </select>
-      
-      <button type="submit">Register Movement</button>
-    </form>
- </div>
+        <label for="type">Type 1 for entry or 2 for exit:</label>
+        <input type="type" name="type" required>
+          
+        <input type="submit" value="Register Moviment" class="moviment_button">
+      </form>
+  </div>
 </body>
 </html>

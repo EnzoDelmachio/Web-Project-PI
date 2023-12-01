@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/product.css">
+   <link rel="stylesheet" type="text/css" href="../css/product.css">
 </head>
 <body>
+   <div class="ui-container">
+      <h2>Product Registration</h2>
+      <form method="post" action="/product" class="product">
 
-<div class="ui-container">
-
-<h2>Product Registration</h2>
-
-<form id="add-product-form">
- <label for="product-name">Product Name:</label>
- <input type="text" id="product-name" name="product-name" required>
+         <label for="name">Product Name:</label>
+         <input type="name" name="name" required>
   
- <label for="product-quantity">Quantity:</label>
- <input type="number" id="product-quantity" name="product-quantity" required>
+         <label for="quantity">Quantity:</label>
+         <input type="quantity" name="quantity" required>
   
- <label for="product-type">Type:</label>
- <select id="product-type" name="product-type" required>
-    <option value="entry">Entry</option>
-    <option value="exit">Exit</option>
- </select>
+         <label for="value">Value:</label>
+         <input type="value" name="value" required>
 
- <button type="submit">Add Product</button>
-</form>
-
-</div>
-
+         <input type="submit" value="Register Product" class="product_button">
+      </form>
+   </div>
 </body>
 </html>

@@ -18,7 +18,7 @@ const Moviment = db.define(
             allowNull: false
         },
         type: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false
         }
 });

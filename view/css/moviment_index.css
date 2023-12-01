@@ -3,41 +3,42 @@ body {
     background-color: #f0f0f0;
    }
    
-   .stock-container {
-    width: 500px;
+   .ui-container {
+    width: 800px;
     padding: 16px;
     background-color: #fff;
     margin: 100px auto;
     box-shadow: 0px 0px 10px 0px #000;
    }
    
-   .stock-container h1 {
-    text-align: center;
-    color: #333;
+   .h1-style {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
    }
    
-   .stock-container h2 {
-    text-align: center;
-    color: #555;
+   .ui-container h2 {
+    margin-top: 50px;
    }
    
-   .stock-container table {
-    width: 100%;
-    border-collapse: collapse;
+   .ui-container form {
     margin-bottom: 20px;
    }
    
-   .stock-container th, .stock-container td {
-    border: 1px solid #ddd;
+   .ui-container label {
+    display: block;
+    margin-top: 10px;
+   }
+   
+   .ui-container input, .ui-container select {
+    width: 100%;
     padding: 8px;
-    text-align: left;
+    margin-top: 6px;
+    border: 1px solid #ddd;
    }
    
-   .stock-container th {
-    background-color: #f0f0f0;
-   }
-   
-   .stock-container a {
+   .ui-container button {
     background-color: #333;
     color: #fff;
     padding: 10px;
@@ -45,8 +46,24 @@ body {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 20px;
    }
    
-   .stock-container a:hover {
+   .ui-container button:hover {
     background-color: #555;
+   }
+   
+   table {
+    width: 100%;
+    border-collapse: collapse;
+   }
+   
+   th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+   }
+   
+   tr:nth-child(even) {
+    background-color: #f2f2f2;
    }
