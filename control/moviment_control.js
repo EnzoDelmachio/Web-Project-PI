@@ -19,7 +19,7 @@ router.post("/moviment", async (req, res)=>{
     var label_name = req.body.name;
 
     const product = await Product.findOne({
-        attributes: ['id', 'name', 'quantity', 'type'],
+        attributes: ['id', 'name', 'quantity', 'value'],
         where: {
             name: label_name
         }
@@ -27,10 +27,20 @@ router.post("/moviment", async (req, res)=>{
 
     if(product == null){
         console.log("Produto inválido")
+    }else{
+        console.log(req.body);
+        await Moviment.create(req.body);
+        var label_type = req.body.type;
+        var label_quantity = req.body.quantity;
+        if(label_type == "1"){
+            product.quantity = product.quantity + label_quantity;
+            await product.save();
+        }else{
+            product.quantity = product.quantity - label_quantity;
+            await product.save();
+        }
+        res.sendFile(path.join(__dirname, "../view/html", "moviment_index.html"))
     }
-    console.log(req.body);
-    await Moviment.create(req.body)
-    res.sendFile(path.join(__dirname, "../view/html", "moviment_index.html"));
 })
 
 router.get("/tableMoviment", async (req, res)=>{
